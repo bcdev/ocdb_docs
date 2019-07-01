@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Brockmann-Consult">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Validation Config - OCDB</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Validation Config";
+    var mkdocs_page_input_path = "ocdb-validation-config.md";
+    var mkdocs_page_url = "/ocdb-validation-config/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/js.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OCDB</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-api-cli/">API</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-data-access-policy/">Data Access Policy</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-examples/">Examples</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-rest/">Rest</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-search/">Search</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-tech-deployment/">Deployment</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-tech-docs/">Tech Docs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-validation-rules/">Validation Rules</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Validation Config</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#validation-configuration">Validation configuration</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#header">Header</a></li>
+        
+            <li><a class="toctree-l3" href="#records">Records</a></li>
+        
+            <li><a class="toctree-l3" href="#errors-and-warnings">Errors and Warnings</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-webui/">WebUI</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OCDB</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Validation Config</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/bcdev/ocdb-docs/ocdb-validation-config.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="validation-configuration">Validation configuration</h1>
+<p>Every <em>in-situ</em> measurement document entering the OCDB system is validated 
+against a list of rules before being accepted by the system. 
+The validation rules can be freely configured using the configuration file 
+"validation_config.json"</p>
+<p>The validation system checks both header fields and measurement records 
+using "Rules". Each rule relates to a section in the configuration file. 
+Also, error and warning messages can be freely configured and associated 
+to the rules.</p>
+<p>The configuration file contains four major sections:</p>
+<p>{<br />
+"header": [],<br />
+"record": [],<br />
+"errors": [],<br />
+"warnings": []<br />
+}  </p>
+<p>which are explained in detail in the following sections.</p>
+<h2 id="header">Header</h2>
+<p>This section in the configuration contains all checks to be executed on the 
+measurement header entries. All checks need to be of one of the following 
+rule types.</p>
+<h3 id="field_required">field_required</h3>
+<p>Checks if a required field is present in the header information and that the field is 
+not empty.  A miss of this rule always results in an error. Parameters are:</p>
+<ul>
+<li><strong>name</strong>: denotes the name of the field. The name tag omits the forward slash and just 
+contains the name</li>
+<li><strong>type</strong>: always "field_required"</li>
+<li><strong>error</strong>: the error message to be displayed, either direct or as a reference (see below).
+Error messages can contain the tags<ul>
+<li><em>{reference}</em>: resolves to the field name.  </li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<pre><code>{
+  "name": "investigators",
+  "type": "field_required",
+  "error": "@required_field_missing"
+}
+</code></pre>
+<h3 id="field_optional">field_optional</h3>
+<p>Checks if an optional field is potentially present and if so that it is not empty. Issues a warning if field 
+is empty. Parameters are:</p>
+<ul>
+<li><strong>name</strong>: denotes the name of the field. The name tag omits the forward slash and just 
+contains the name</li>
+<li><strong>type</strong>: always "field_optional"</li>
+<li><strong>warning</strong>: the warning message to be displayed, either direct or as a reference (see below).
+Warning messages can contain the tags<ul>
+<li><em>{reference}</em>: resolves to the field name.</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<pre><code>{
+  "name": "station",
+  "type": "field_optional",
+  "warning": "@field_value_missing"
+}
+</code></pre>
+<h3 id="field_obsolete">field_obsolete</h3>
+<p>Check if an obsolete header field is present in the header. If so, a warning message is issued.
+Parameters are:</p>
+<ul>
+<li><strong>name</strong>: denotes the name of the field. The name tag omits the forward slash and just 
+contains the name</li>
+<li><strong>type</strong>: always "field_obsolete"</li>
+<li><strong>warning</strong>: the warning message to be displayed, either direct or as a reference (see below).
+Warning messages can contain the tags<ul>
+<li><em>{reference}</em>: resolves to the field name.</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<pre><code>{
+  "name": "station_alt_id",
+  "type": "field_obsolete",
+  "warning": "@obsolete_field"
+}
+</code></pre>
+<h3 id="field_compare">field_compare</h3>
+<p>Check that the values of header fields follow relational rules (e.g. stop day not before start day).
+Parameters are:</p>
+<ul>
+<li><strong>reference_name</strong>: denotes the name of the reference field. The name tag omits the forward slash and just 
+contains the name</li>
+<li><strong>compare_name</strong>: denotes the name of the comparand field. The name tag omits the forward slash and just 
+contains the name</li>
+<li><strong>type</strong>: always "field_compare"</li>
+<li><strong>operation</strong>: one of the relational operators<ul>
+<li>>=: greater than or equal</li>
+<li>>: greater than</li>
+<li>!=: not equal</li>
+<li>==: equal</li>
+<li>\&lt;: lesser than </li>
+<li>\&lt;=: lesser than or equal</li>
+</ul>
+</li>
+<li><strong>data_type</strong>: data type of the field value. Must be one of:<ul>
+<li>date: a date value formatted "YYYYmmdd"</li>
+<li>number: a numerical value</li>
+<li>string: a string value  </li>
+</ul>
+</li>
+<li><strong>error</strong>: the error message to be displayed, either direct or as a reference (see below).
+Error messages can contain the tags<ul>
+<li><em>{reference}</em>: resolves to the reference field name. </li>
+<li><em>{ref_val}</em>: resolves to the value of the reference field. </li>
+<li><em>{compare}</em>: resolves to the comparand field name. </li>
+<li><em>{comp_val}</em>: resolves to the value of the comparand field.</li>
+</ul>
+</li>
+<li><strong>warning</strong>: the warning message to be displayed, either direct or as a reference (see below).
+Warning messages are overridden if error is present. Warning messages can contain the tags<ul>
+<li><em>{reference}</em>: resolves to the reference field name. </li>
+<li><em>{ref_val}</em>: resolves to the value of the reference field. </li>
+<li><em>{compare}</em>: resolves to the comparand field name. </li>
+<li><em>{comp_val}</em>: resolves to the value of the comparand field.</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<pre><code>{
+  "type": "field_compare",
+  "reference": "start_date",
+  "compare": "end_date",
+  "operation": "&lt;=",
+  "data_type": "date",
+  "error": "@header_start_after_finish"
+}
+</code></pre>
+<h2 id="records">Records</h2>
+<p>Checks on the record section cover two entities:</p>
+<ul>
+<li>the correct unit(s) </li>
+<li>correct value ranges </li>
+</ul>
+<p>The list of variable names to validate is derived from the header field "fields" that defines the 
+columns of the record section. A variable name can optionally be followed by any number of digits to 
+e.g. denote the wavelength at which the measurement was taken. The name in the configuraiton file must be the raw name, 
+without the numbers; these are automatically stripped for the validation chores.</p>
+<p>The units for a variable are defined in the header section "units" as a comma separated list of unit names. Each test can
+be configured to check for more than one valid physical unit (e.g. mg/m^3 or ug/l).</p>
+<p>After these global checks have successfully been passed, all values as stored in the records section are optionally 
+checked to stay in the defined value ranges for the variable. These checks are fill-value-aware in the sense that 
+possible fill values as defined in the header section "missing" are treated as check-passed.</p>
+<p>The check of the record content supports the following data types:</p>
+<h3 id="number-record">Number record</h3>
+<p>Checks a numerical measurement variable.<br />
+Parameters are:</p>
+<ul>
+<li><strong>data_type</strong>: always "number"</li>
+<li><strong>name</strong>: the name of the variable without the optionally appended wavelength</li>
+<li><strong>unit</strong>: the list of physical units as comma separated values. Set to "none" or "unitless" if the variable is dimensionless.</li>
+<li><strong>lower_bound</strong>: lower numerical bound for the variable values. Skip field if no lower bound is to be applied.</li>
+<li><strong>upper_bound</strong>: upper numerical bound for the variable values. Skip field if no upper bound is to be applied.</li>
+<li><strong>unit_error</strong>: the error message to be displayed on an error related to the physical units, either direct or as a reference (see below).
+Unit error messages can contain the tags<ul>
+<li><em>{field_name}</em>: resolves to the variable name. </li>
+<li><em>{unit}</em>: resolves to the required unit(s). </li>
+<li><em>{bad_unit}</em>: resolves to the unit detected as incorrect. </li>
+</ul>
+</li>
+<li><strong>value_error</strong>: the error message to be displayed on an error related to the variable values, either direct or as a reference (see below).
+Value error messages can contain the tags<ul>
+<li><em>{field_name}</em>: resolves to the variable name. </li>
+<li><em>{line}</em>: resolves to the record line number where the error was detected. </li>
+<li><em>{value}</em>: resolves to the erroneous value. </li>
+<li><em>{lower_bound}</em>: resolves to the lower numerical bound (if defined).</li>
+<li><em>{upper_bound}</em>: resolves to the upper numerical bound (if defined).</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<pre><code>{
+  "name": "adg",
+  "unit": "1/m",
+  "lower_bound": 0,
+  "data_type": "number",
+  "value_error": "@field_out_of_bounds",
+  "unit_error": "@field_has_wrong_unit"
+}
+</code></pre>
+<h3 id="date-record">Date record</h3>
+<p>Checks a measurement variable containing a date value, formatted as "YYYYMMDD". Checks that the date format is correct, 
+month and day values are within the standard boundaries and that the date is after the min_date defined.</p>
+<p>Parameters are:</p>
+<ul>
+<li><strong>data_type</strong>: always "date"</li>
+<li><strong>name</strong>: the name of the variable</li>
+<li><strong>min_year</strong>: The lower bound of dates accepted as minimal year.</li>
+</ul>
+<p>Example:</p>
+<pre><code>{
+  "name": "date_processed",
+  "min_year": 1975,
+  "data_type": "date"
+}
+</code></pre>
+<h3 id="time-record">Time record</h3>
+<p>Checks a measurement variable defining a timestamp, formatted as "hh:mm:ss". Checks that the time format is correct and 
+the values for hours, minutes and seconds are within their ranges. </p>
+<p>Parameters are:</p>
+<ul>
+<li><strong>data_type</strong>: always "time"</li>
+<li><strong>name</strong>: the name of the variable</li>
+<li><strong>unit</strong>: the list of physical units as comma separated values. Set to "none" or "unitless" if the variable is dimensionless.</li>
+<li><strong>unit_error</strong>: the error message to be displayed on an error related to the physical units, either direct or as a reference (see below).
+Unit error messages can contain the tags<ul>
+<li><em>{field_name}</em>: resolves to the variable name. </li>
+<li><em>{unit}</em>: resolves to the required unit(s). </li>
+<li><em>{bad_unit}</em>: resolves to the unit detected as incorrect. </li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<pre><code>{
+  "name": "time_processed",
+  "unit": "hh:mm:ss",
+  "data_type": "time",
+  "unit_error": "@field_has_wrong_unit"
+}
+</code></pre>
+<h3 id="string-record">String record</h3>
+<p>Checks a measurement variable containing a string value. Checks that the string value is not empty.</p>
+<p>Parameters are:</p>
+<ul>
+<li><strong>data_type</strong>: always "string"</li>
+<li><strong>name</strong>: the name of the variable</li>
+<li><strong>error</strong>: the error message to be displayed, either direct or as a reference (see below).
+Error messages can contain the tags<ul>
+<li><em>{field_name}</em>: resolves to the variable name. </li>
+<li><em>{line}</em>: resolves to the record line number where the error was detected. </li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<pre><code>{
+  "name": "hplc_gsfc_id",
+  "data_type": "string",
+  "error": "@field_is_empty"
+}
+</code></pre>
+<h2 id="errors-and-warnings">Errors and Warnings</h2>
+<p>The OCDB validation system allows to customize most of the error and warning messages. Messages can be either 
+literal messages (i.e. these are displayed "as is" ) or can refer to a predefined message using the "@" character.</p>
+<p>Example:</p>
+<pre><code>{
+  "name": "adg",
+  "unit": "1/m",
+  "lower_bound": 0,
+  "data_type": "number",
+  "value_error": "@field_out_of_bounds",
+  "unit_error": "This field has a faulty unit"
+}
+</code></pre>
+<p>The "value_error" is referring to a message template while the "unit_error" is using a literal error message.</p>
+<p>The predefined messages are stored in the sections "errors" and "warnings" of the configuration file. A message is 
+defined by a message name and the message text. Validation rules always refer to the name using the pattern "@name".</p>
+<p>Example:</p>
+<pre><code>"errors": [
+    {
+        "name": "south_north_mismatch",
+        "message": "South_latitude is larger than north_latitude"
+       }
+]
+</code></pre>
+<p>The versatility of this message-system is supported by the possibility to use tags in the message templates. 
+A tag is added to a message by writing the tag name in curly braces. Example:</p>
+<pre><code>{
+  "name": "field_has_wrong_unit",
+  "message": "The units of '{field_name}', should be '{unit}', not '{bad_unit}'."
+}
+</code></pre>
+<p>The possible tags for each validation rule is listed above in the descriptions of the rule parameters.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ocdb-webui/" class="btn btn-neutral float-right" title="WebUI">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ocdb-validation-rules/" class="btn btn-neutral" title="Validation Rules"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/bcdev/ocdb-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../ocdb-validation-rules/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ocdb-webui/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

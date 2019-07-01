@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Brockmann-Consult">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Search - OCDB</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Search";
+    var mkdocs_page_input_path = "ocdb-search.md";
+    var mkdocs_page_url = "/ocdb-search/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/js.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OCDB</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-api-cli/">API</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-data-access-policy/">Data Access Policy</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-examples/">Examples</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-rest/">Rest</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Search</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#search-the-database">Search the Database</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#lucene-syntax">Lucene Syntax</a></li>
+        
+            <li><a class="toctree-l3" href="#groups">Groups</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-tech-deployment/">Deployment</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-tech-docs/">Tech Docs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-validation-rules/">Validation Rules</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-validation-config/">Validation Config</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-webui/">WebUI</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OCDB</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Search</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/bcdev/ocdb-docs/ocdb-search.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="search-the-database">Search the Database</h1>
+<p>All data the submittors have agreed to publish is searchable for the public. 
+The OCDB WebUI offers a graphical search interface. Main feature of this interface is the search text field.
+You can enter a single keyword which will attempt to find data using the meta
+data fields provided by the submittor. This field also allows to use the
+so-called Lucene syntax which enables you to search for specific field values
+and also allows chaining. A concise description of the full Lucene query language syntax can be found at 
+https://lucene.apache.org/core/2_9_4/queryparsersyntax.html. </p>
+<p>Please note that the OCDB system does not support the complete syntax.</p>
+<h2 id="lucene-syntax">Lucene Syntax</h2>
+<pre><code>[field]: [expression]
+</code></pre>
+
+<p><strong>Exact Match</strong>:</p>
+<pre><code>investigators: Colleen
+</code></pre>
+
+<p>Returns all datasets where the field "investigators" exactly matches the term "Colleen". </p>
+<p><strong>Wild Card</strong>:</p>
+<pre><code>investigators: *Colleen*
+investigators: ?Colleen?
+</code></pre>
+
+<p>Lucene syntax offers two flavours of wildcards; the "*" represents multiple wildcard characters, the "?" denotes a 
+single character wildcard. So the first example above returns all datasets with the investigators field containing 
+"Colleen", surrounded by any number of characters, whereas the second returns datasets with "Colleen" preceded and followed by any single character.  </p>
+<p><strong>Operators AND/OR</strong>:</p>
+<pre><code>investigators: *Colleen* AND investigators: Helge
+investigators: *Colleen* OR investigators: Helge
+</code></pre>
+
+<p>These operators allow to combine conditions. As expected, the "AND" implements a logical AND, the "OR" represents the logical OR operation.</p>
+<p><strong>Operators Lower/Greater Than</strong>:</p>
+<pre><code>investigators: &gt;Colleen
+investigators: &lt;Colleen
+</code></pre>
+
+<p>Allows to search for datasets where a field is greater that or smaller than a reference. For number fields the functionality is obvious. 
+When applying the operator to String fields, alphanumerical comparisoins are used (i.e. C&gt;B is TRUE).</p>
+<h2 id="groups">Groups</h2>
+<p>The search interface allows to restrict result sets to certain geophysical variable types, the so-called "groups".
+A list of groups and the variables covered is listed in the table below:</p>
+<pre><code class="eval_rst">============ =============================================================
+Group        Description
+============ =============================================================
+a            Spectral absorption coefficients: a, ap, aph, ad, ag
+b            Spectral scattering coefficients: b, bp
+bb           Spectral backscattering coefficients: bb, bbp, beta (VSF)
+c            Spectral attenuation coefficients: c, cg, cp, cpg
+DC           Dissolved carbon: DIC, DOC, pCO2, alkalinity, CDOM
+PC           Particulate carbon: PIC, POC
+SPM          Suspended particulate matter
+AOT          Aerosol optical properties: AOT, angstrom, water vapor, ozone
+nutrients    Si, N, P, oxygen
+CTD          Hydrography: Wt, Sal/Cond, sigmaT
+fluorescence Fluorescence
+productivity NPP, NCP, GPP, PP
+Chl          Chlorophyll-a only
+HPLC         HPLC: Phytoplankton pigments
+============ =============================================================
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ocdb-tech-deployment/" class="btn btn-neutral float-right" title="Deployment">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ocdb-rest/" class="btn btn-neutral" title="Rest"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/bcdev/ocdb-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../ocdb-rest/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ocdb-tech-deployment/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

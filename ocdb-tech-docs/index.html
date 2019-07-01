@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Brockmann-Consult">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Tech Docs - OCDB</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Tech Docs";
+    var mkdocs_page_input_path = "ocdb-tech-docs.md";
+    var mkdocs_page_url = "/ocdb-tech-docs/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/js.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OCDB</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-api-cli/">API</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-data-access-policy/">Data Access Policy</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-examples/">Examples</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-rest/">Rest</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-search/">Search</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-tech-deployment/">Deployment</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Tech Docs</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#editing-the-documentation">Editing the Documentation</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#step-1-get-a-github-account">Step 1: Get a GitHub Account</a></li>
+        
+            <li><a class="toctree-l3" href="#step-2-edit-an-md-file">Step 2: Edit an md file</a></li>
+        
+            <li><a class="toctree-l3" href="#a-brief-on-markdown">A brief on Markdown</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#header-1">Header 1</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#header2">Header2</a></li>
+        
+            <li><a class="toctree-l3" href="#code">Code</a></li>
+        
+            <li><a class="toctree-l3" href="#tables">Tables</a></li>
+        
+            <li><a class="toctree-l3" href="#images-and-links">Images and Links</a></li>
+        
+            <li><a class="toctree-l3" href="#uploading-files">Uploading Files</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-validation-rules/">Validation Rules</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-validation-config/">Validation Config</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-webui/">WebUI</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OCDB</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Tech Docs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/bcdev/ocdb-docs/ocdb-tech-docs.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="editing-the-documentation">Editing the Documentation</h1>
+<h2 id="step-1-get-a-github-account">Step 1: Get a GitHub Account</h2>
+<p>Go to <a href="https://github.com">GitHub</a> and create an account for yourself. 
+In future you will be able to use your internal BitBucket infrastructure
+to do exactly the same.</p>
+<p><img alt="register" src="../static/webui/docs_github_register.png" /></p>
+<h2 id="step-2-edit-an-md-file">Step 2: Edit an md file</h2>
+<p>Go to the <a href="https://github.com">OCDB docs</a> and click on an md file. On
+the top right corner you find an edit button. Click it and an editor will 
+open. </p>
+<p>The editor uses so-called markdown. Markdown documents are great for
+these kinds of documents but have two issues: images and tables.</p>
+<p><img alt="open" src="../static/webui/docs_open_md_file.png" />
+<img alt="edit" src="../static/webui/docs_edit_md.png" /></p>
+<h2 id="a-brief-on-markdown">A brief on Markdown</h2>
+<p>Markdown is a simple text file that is in this case translated into html.
+The translator needs information about formattings like paragraphs, headers,
+images etc. This is done by special characters. A hash (#) for instance
+tells the translator  that a heading is following. The number of hashes 
+you use notifies which level the heading is.</p>
+<p>To gie an example:</p>
+<pre><code class="markdown"># Header 1
+## Header2
+
+- list item1
+- list item2
+  - list item 2.1
+</code></pre>
+
+<p>Translates into:</p>
+<h1 id="header-1">Header 1</h1>
+<h2 id="header2">Header2</h2>
+<ul>
+<li>list item1</li>
+<li>list item2</li>
+<li>list item 2.1</li>
+</ul>
+<p>The easiest is to use this <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">cheat sheet</a>
+or its <a href="https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf">PDF version</a></p>
+<h2 id="code">Code</h2>
+<p>Markdown is very string when highlighting source code. Start a 
+paragraph using three single quotes (OBS: on the German keyboard
+you have to use the upper apostroph key in the top row. That character
+ONLY appears if its followed by pushing the space key. Drove me crazy!)</p>
+<p>Example for python:</p>
+<pre><code class="python">import csv
+
+with open('test.csv', 'r') as csv_file: 
+    reader = csv.read(csv_file)
+</code></pre>
+
+<h2 id="tables">Tables</h2>
+<p>Unfortunately readthedocs.io cannot parse markdown tables. You will have to use
+rst tables instead. Use this tool for smaller tables: <a href="https://truben.no/table/">Table Editor</a>.</p>
+<p>This tool will generate reStructured text which is very similar to markdown.
+Include the text like this:</p>
+<pre><code class="rst_eval">+---------+---------+---------+
+| header1 | header2 | header3 |
++=========+=========+=========+
+| 1       | 1       | 1       |
++---------+---------+---------+
+| 2       | 2       | 2       |
++---------+---------+---------+
+| 3       | 3       | 3       |
++---------+---------+---------+
+</code></pre>
+
+<p>For larger tables you can import a csv file like this:</p>
+<pre><code class="eval_rst">
+.. csv-table:: The contents of 
+   :widths: 15 40 20
+   :header-rows: 1
+   :file: ocdb_fields.csv
+</code></pre>
+
+<p><code>eval_rst</code> translates the reStructured text to markdown for you.</p>
+<h2 id="images-and-links">Images and Links</h2>
+<p>Unfortunately there is no way to copy and paste images. You need to upload 
+the first. Uploading files will be described in the following chapter. 
+Including an image  </p>
+<pre><code class="markdown">![submission](static/webui/submission_dialog.png)
+</code></pre>
+
+<p>Results in:</p>
+<p><img alt="submission" src="../static/webui/submission_dialog.png" /></p>
+<h2 id="uploading-files">Uploading Files</h2>
+<p>On the GitHub repository site, browse to the directory the file shall reside in
+e.g.:</p>
+<pre><code>https://github.com/bcdev/ocdb-webui/tree/master/docs/source/static/webui 
+</code></pre>
+
+<p>Click on 'Upload files' in the rop right corner. Drag and drop you file(s)
+into the dialog.</p>
+<p>Add some documentation about the purpose of the file and click 'Commit Changes'.</p>
+<p>If you use this file in the documentation please be aware that you 
+have to refer to it from the docs/source directory as that is
+where the documentation will be compiled when pushing to readthedocs.io.</p>
+<p>The file submission_dialog.png for instance resides in <code>docs/source/static/webui</code>
+but will refered to as:</p>
+<pre><code class="markdown">![submission](static/webui/submission_dialog.png)
+</code></pre>
+
+<p><img alt="upload" src="../static/webui/docs_upload_files.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ocdb-validation-rules/" class="btn btn-neutral float-right" title="Validation Rules">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ocdb-tech-deployment/" class="btn btn-neutral" title="Deployment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/bcdev/ocdb-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../ocdb-tech-deployment/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ocdb-validation-rules/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

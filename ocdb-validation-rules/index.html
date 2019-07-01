@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Brockmann-Consult">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Validation Rules - OCDB</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Validation Rules";
+    var mkdocs_page_input_path = "ocdb-validation-rules.md";
+    var mkdocs_page_url = "/ocdb-validation-rules/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/js.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OCDB</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-api-cli/">API</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-data-access-policy/">Data Access Policy</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-examples/">Examples</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-rest/">Rest</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-search/">Search</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-tech-deployment/">Deployment</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-tech-docs/">Tech Docs</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Validation Rules</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#ocdb-data-import-validation-rules">OCDB Data Import Validation Rules</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#header">Header</a></li>
+        
+            <li><a class="toctree-l3" href="#records">Records</a></li>
+        
+            <li><a class="toctree-l3" href="#field-suffixes">Field suffixes</a></li>
+        
+            <li><a class="toctree-l3" href="#field-modifiers">Field Modifiers</a></li>
+        
+            <li><a class="toctree-l3" href="#fields">Fields</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-validation-config/">Validation Config</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-webui/">WebUI</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OCDB</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Validation Rules</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/bcdev/ocdb-docs/ocdb-validation-rules.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="ocdb-data-import-validation-rules">OCDB Data Import Validation Rules</h1>
+<p>The OCDB database system applies data validation rules during data submission. Teh aim is to
+ensure inter-operability. Please refer to for more information about the structure
+of these rules. This chapter will list the current rules.</p>
+<h2 id="header">Header</h2>
+<p>The header rules essentially check the existence of a header <strong>field</strong>. If a header <strong>field</strong> is required and not 
+present in the data submitted, an error is reported. An optional field raises an error only if the field does not contain 
+data. The existence of an obsolete <strong>field</strong> in the data will raise a warning in the data validation report.</p>
+<h3 id="required-fields">Required fields</h3>
+<ul>
+<li><strong>investigators</strong>: The contributors of the data file. Principal investigator is listed first, followed by any associate investigators.</li>
+<li><strong>affiliations</strong>: A list of affiliations (e.g. university, laboratory) for each investigator.</li>
+<li><strong>contact</strong>: An email address for one of the investigators or point of contact for the data file.</li>
+<li><strong>experiment</strong>: The name of the over-arching, long-term research project or funding program.</li>
+<li><strong>cruise</strong>: The name of the specific cruise (or subset of the experiment) where the data in the file were collected. </li>
+<li><strong>north_latitude</strong>: The farthest north data in the file were collected (in decimal degrees). This header field requires a 
+[DEG] trailer. Latitudes south of the equator are negative.</li>
+<li><strong>south_latitude</strong>: The farthest south data in the file were collected (in decimal degrees). This header fields requires a 
+[DEG] trailer. Latitudes south of the equator are negative.</li>
+<li><strong>east_longitude</strong>: The farthest east data in the file were collected (in decimal degrees). This header field requires a 
+[DEG] trailer. Longitudes west of the Prime Meridian are negative.</li>
+<li><strong>west_longitude</strong>: The farthest west data in the file were collected (in decimal degrees). This header fields requires a 
+[DEG] trailer. Longitudes west of the Prime Meridian are negative.</li>
+<li><strong>start_date</strong>: The earliest date data in the file were collected (in YYYYMMDD).</li>
+<li><strong>end_date</strong>: The latest date data in the file were collected (in YYYYMMDD).</li>
+<li><strong>start_time</strong>: The earliest time of day measurements were collected during the start_date in the file (in HH:MM:SS). 
+Times are in Greenwich Mean Time. This header requires a [GMT] trailer.</li>
+<li><strong>end_time</strong>: The latest time of day data data were collected during the end_date in the file (in HH:MM:SS). 
+Times are in Greenwich Mean Time. This header requires a [GMT] trailer.</li>
+<li><strong>data_file_name</strong>: The current name of the data file.</li>
+<li><strong>documents</strong>: Refers to cruise reports, station logs, digital images, and other associated documentation that provide 
+additional information about the experiment and cruise. Every OCDB submission must be accompanied by an instrumentation/calibration 
+report that describes the instruments used, how they were calibrated and how data were collected and processed. Multiple documents 
+must be supplied as comma-separated list. </li>
+<li><strong>calibration_files</strong>: Refers to supplementary files containing coefficients and techniques used to calibrate the 
+instruments used in data collection.</li>
+<li><strong>data_type</strong>: Describes the general collection method for the data. Accepted values include:<ul>
+<li><em>cast</em> for vertical profiles (e.g. optical packages, CTD)</li>
+<li><em>flow_thru</em> for continuous data (e.g. shipboard, underway flow through systems)</li>
+<li><em>above_water</em> for above surface radiometry data (e.g. ASD, SIMBAD, Satlantic SAS)</li>
+<li><em>sunphoto</em> for sunphotometry data (e.g. MicroTops, PREDE)</li>
+<li><em>mooring</em> for moored and buoy data</li>
+<li><em>drifter</em> for drifter and drogue data</li>
+<li><em>scan</em> for discrete hyperspectral measurements</li>
+<li><em>lidar</em> for lidar and other active remote-sensing measurements (e.g. MPL)</li>
+<li><em>pigment</em> for laboratory measured pigment data (e.g. fluorometry, spectrophotometry, HPLC)</li>
+<li><em>bottle</em> for other types of measurements from water samples collected at discrete depths (e.g. nutrients)</li>
+<li><em>diver</em> for measurements made by a diver</li>
+<li><em>auv</em> for measurements made by an autonomous underwater vehicle (auv)</li>
+<li><em>airborne</em> for measurements made via an aircraft</li>
+</ul>
+</li>
+<li><strong>missing</strong>: Refers to the NULL value used as a numeric placeholder for any missing data in the data file.</li>
+<li><strong>delimiter</strong>: Indicates how the columns of data are delimited. Accepted delimiters include <em>tab</em>, <em>space</em>, and <em>comma</em>. 
+Only a single (1) delimiter is permitted per data file.</li>
+<li><strong>fields</strong>: A list of the field names for each column of data included in the data file, separated by <em>delimiter</em>. 
+Each entry describes the data in a single (1) column, and every column must have an entry.</li>
+<li><strong>units</strong>: A list of the units for each column of data included in the data file, separated by <em>delimiter</em>.</li>
+<li><strong>water_depth</strong>: The water (bottom) depth at the station where the data were collected (in meters). Set to <em>missing</em> if not known.</li>
+</ul>
+<h3 id="optional-fields">Optional fields</h3>
+<ul>
+<li><strong>station</strong>: The name of the station or deployment where data in the file were obtained.</li>
+<li><strong>data_status</strong>: The condition, or status, of the data file. The value <em>preliminary</em> is used when the data are new 
+and the investigator intends to analyze the data further. The value <em>update</em> indicates the data are being resubmitted and 
+informs users that an additional resubmission will occur in the future. The value <em>final</em> is used when the investigator 
+has no intention of revisiting the data set.</li>
+<li><strong>secchi_depth</strong>: The secchi depth at the station where the data were collected (in meters).</li>
+<li><strong>cloud_percent</strong>: Percent cloud cover for the entire sky. For example: 0 indicates no clouds and 100 indicates completely overcast.</li>
+<li><strong>wave_height</strong>: The wave height at the station where the data were collected (in meters).</li>
+<li><strong>wind_speed</strong>: The wind speed at the station where the data were collected (in meters per second).</li>
+</ul>
+<h3 id="obsolete-fields">Obsolete fields</h3>
+<ul>
+<li>station_alt_id</li>
+<li>associated_archives</li>
+<li>associated_archive_types</li>
+<li>associated_files</li>
+<li>associated_file_types</li>
+<li>original_file_name</li>
+<li>parameters</li>
+<li>measurement_depth</li>
+<li>volfilt</li>
+<li>end_header@</li>
+<li>received</li>
+<li>identifier_product_doi</li>
+<li>below_detection_limit</li>
+<li>above_detection_limit</li>
+<li>optical_depth_warning</li>
+<li>area</li>
+<li>null_correction</li>
+<li>biotic_setting</li>
+<li>biotic_class</li>
+<li>biotic_subclass</li>
+<li>biotic_group</li>
+<li>biotic_comm_unit_y</li>
+<li>geoform_tectonic_setting</li>
+<li>geoform_physiographic_setting</li>
+<li>geoform_origin</li>
+<li>geoform</li>
+<li>geoform_type</li>
+<li>substrate_origin</li>
+<li>substrate_class</li>
+<li>substrate_subclass</li>
+<li>substrate_group</li>
+<li>substrate_subgroup</li>
+<li>water_column_biogeochemical_feature</li>
+<li>water_column_hydroform_class</li>
+<li>water_column_hydroform</li>
+<li>water_column_hydroform_type</li>
+<li>water_column_layer</li>
+<li>water_column_salinity</li>
+<li>water_column_temperature</li>
+<li>chemical_formula</li>
+<li>mass_to_charge</li>
+</ul>
+<h2 id="records">Records</h2>
+<p>Each record is checked against the below rules. The majority of teh rules encompass
+checks on valid <strong>unit__s, __data type</strong>, and bounds if defined.</p>
+<ul>
+<li><strong>name</strong>: a, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: a*ph, <strong>unit</strong>: m^2/mg, <strong>data type</strong>: number, <strong>lower bound</strong>: -1e-05</li>
+<li><strong>name</strong>: a*srfa, <strong>unit</strong>: m^2/mg, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: aaer, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: abs, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: abs_blank_ap, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: abs_blank_ad, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: abs_blank_ag, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: abs*, <strong>unit</strong>: m^2/mg, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: abs_ad, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: abs_ag, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: abs_ap, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: abs_nacl, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: abundance, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ad, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ad_unc, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: adg, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ag, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: agp, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: asrfa, <strong>unit</strong>: 1/m, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: allo, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: alpha-beta-car, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: altitude, <strong>unit</strong>: m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: am, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: angstrom, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: anth, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: aot, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0.005, <strong>upper bound</strong>: 2.0</li>
+<li><strong>name</strong>: amc, <strong>unit</strong>: umol, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: amc-leu, <strong>unit</strong>: umol/l/hr, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: ap, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ap_unc, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: aph, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: aph_unc, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: asta, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: at, <strong>unit</strong>: degreesC, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: aw, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: b, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: bb, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: bbp, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: bbp_bp, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: bbw, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: bchl_a, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: bactp, <strong>unit</strong>: pmol/L/hr, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: bact_abun, <strong>unit</strong>: cells/L, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: beta-beta-car, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: beta-epi-car, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: beta-psi-car, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: bin_depth, <strong>unit</strong>: m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: bincount, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: bp, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: bsi, <strong>unit</strong>: mmol/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: but-fuco, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: bw, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: c, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: c2h3n_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: c2h4o_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: c2h6s_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: c3h6o_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: c5h8_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: c6h6_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: cantha, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: cdmf, <strong>unit</strong>: volts,ppb, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: cdom, <strong>unit</strong>: mg/m^3,ug/l,ppb, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: cg, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: cgp, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ch4o_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ch4s_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: chl, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0, <strong>upper bound</strong>: 100</li>
+<li><strong>name</strong>: chl_ex, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0, <strong>upper bound</strong>: 100</li>
+<li><strong>name</strong>: chl_a, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0, <strong>upper bound</strong>: 100</li>
+<li><strong>name</strong>: chl_a_allom, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: chl_a_prime, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: chl_b, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: chl_c, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: chl_c1, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: chl_c1c2, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: chl_c2, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: chl_c3, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: chlide_a, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: chlide_b, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: cloud, <strong>unit</strong>: %, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: cnw, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: cond, <strong>unit</strong>: mmho/cm, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: cp, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: cp_gamma, <strong>unit</strong>: none, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: croco, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: cw, <strong>unit</strong>: 1/m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: cycle, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: day, <strong>unit</strong>: dd, <strong>data type</strong>: number, <strong>lower bound</strong>: 1</li>
+<li><strong>name</strong>: depth, <strong>unit</strong>: m,meters, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: dewpoint, <strong>unit</strong>: degreesC, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: diadchr, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: diadino, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: diato, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: dic, <strong>unit</strong>: umol/kg, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: dino, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: dmsa, <strong>unit</strong>: ppt, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: dmssw, <strong>unit</strong>: nmol/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: dna, <strong>unit</strong>: mg/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: doc, <strong>unit</strong>: umol/kg, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: dp, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: dv_chl_a, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: dv_chl_b, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: echin, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ed, <strong>unit</strong>: uW/cm^2/nm,uWcm-2nm-1, <strong>data type</strong>: number, <strong>lower bound</strong>: -0.001, <strong>upper bound</strong>: 250.0</li>
+<li><strong>name</strong>: edgnd, <strong>unit</strong>: volts, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: edpitch, <strong>unit</strong>: degrees, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: edroll, <strong>unit</strong>: degrees, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: elapsed_time, <strong>unit</strong>: seconds, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: elw, <strong>unit</strong>: uW/cm^2, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: epar, <strong>unit</strong>: uE/cm^2/s, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: epi-epi-car, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: es, <strong>unit</strong>: uW/cm^2/nm,uWcm-2nm-1, <strong>data type</strong>: number, <strong>lower bound</strong>: -0.001, <strong>upper bound</strong>: 250.0</li>
+<li><strong>name</strong>: esgnd, <strong>unit</strong>: volts, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: esky, <strong>unit</strong>: uW/cm^2/nm,uWcm-2nm-1, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: espitch, <strong>unit</strong>: degrees, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: esroll, <strong>unit</strong>: degrees, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: esun, <strong>unit</strong>: uW/cm^2/nm,uWcm-2nm-1, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: esw, <strong>unit</strong>: uW/cm^2, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: et-8-carot, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: et-chlide_a, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: et-chlide_b, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: eu, <strong>unit</strong>: uW/cm^2/nm,uWcm-2nm-1, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: eugnd, <strong>unit</strong>: volts, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: eupar, <strong>unit</strong>: uE/cm^2/s, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: f0, <strong>unit</strong>: uW/cm^2/nm, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: f-initial, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: fm, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: fv_fm, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: fuco, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: g, <strong>unit</strong>: d-1,1/d,d^-1, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: g_herb, <strong>unit</strong>: d-1,1/d,d^-1, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: gyro, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: heading, <strong>unit</strong>: degrees, <strong>data type</strong>: number, <strong>lower bound</strong>: 0, <strong>upper bound</strong>: 360.0</li>
+<li><strong>name</strong>: hex-fuco, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: hex-kfuco, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: hour, <strong>unit</strong>: hh, <strong>data type</strong>: number, <strong>lower bound</strong>: 0, <strong>upper bound</strong>: 23</li>
+<li><strong>name</strong>: it, <strong>unit</strong>: degreesC, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: iso_c2h3n_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: iso_c2h4o_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: iso_c2h6s_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: iso_c3h6o_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: iso_ch4o_h, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: jd, <strong>unit</strong>: jjj, <strong>data type</strong>: number, <strong>lower bound</strong>: 1, <strong>upper bound</strong>: 366</li>
+<li><strong>name</strong>: kd, <strong>unit</strong>: 1/m,m-1, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: kl, <strong>unit</strong>: 1/m,m-1, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: knf, <strong>unit</strong>: 1/m,m-1, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: kpar, <strong>unit</strong>: 1/m,m-1, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ku, <strong>unit</strong>: 1/m,m-1, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: lat, <strong>unit</strong>: degrees, <strong>data type</strong>: number, <strong>lower bound</strong>: -90.0, <strong>upper bound</strong>: 90.0</li>
+<li><strong>name</strong>: lightlevel, <strong>unit</strong>: %, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: lon, <strong>unit</strong>: degrees, <strong>data type</strong>: number, <strong>lower bound</strong>: -180.0, <strong>upper bound</strong>: 180.0</li>
+<li><strong>name</strong>: lsi, <strong>unit</strong>: mmol/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: lsky, <strong>unit</strong>: uW/cm^2/nm,uWcm-2nm-1, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: lt, <strong>unit</strong>: uW/cm^2/nm,uWcm-2nm-1, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: lu, <strong>unit</strong>: uW/cm^2/nm,uWcm-2nm-1, <strong>data type</strong>: number, <strong>lower bound</strong>: -0.001, <strong>upper bound</strong>: 5.0</li>
+<li><strong>name</strong>: lugnd, <strong>unit</strong>: volts, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: lut, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: lw, <strong>unit</strong>: uW/cm^2/nm,uWcm-2nm-1, <strong>data type</strong>: number, <strong>lower bound</strong>: -0.001, <strong>upper bound</strong>: 5.0</li>
+<li><strong>name</strong>: lwn, <strong>unit</strong>: uW/cm^2/nm,uWcm-2nm-1, <strong>data type</strong>: number, <strong>lower bound</strong>: -0.001</li>
+<li><strong>name</strong>: lwnex, <strong>unit</strong>: uW/cm^2/nm,uWcm-2nm-1, <strong>data type</strong>: number, <strong>lower bound</strong>: -0.001</li>
+<li><strong>name</strong>: lyco, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: me-chlinde_a, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: me-chlinde_b, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: mg_dvp, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: minute, <strong>unit</strong>: mn, <strong>data type</strong>: number, <strong>lower bound</strong>: 0, <strong>upper bound</strong>: 60</li>
+<li><strong>name</strong>: monado, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: month, <strong>unit</strong>: mo, <strong>data type</strong>: number, <strong>lower bound</strong>: 1, <strong>upper bound</strong>: 12</li>
+<li><strong>name</strong>: mpf, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: muf, <strong>unit</strong>: umol, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: muf-but, <strong>unit</strong>: umol/l/hr, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: muf-glu, <strong>unit</strong>: umol/l/hr, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: muf-po4, <strong>unit</strong>: umol/l/hr, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: mv_chl_a, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: mv_chl_b, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: mz, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: n2_fix, <strong>unit</strong>: ug/m^3/d, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: nadir, <strong>unit</strong>: degrees, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: nanoeukaryote_abun, <strong>unit</strong>: cell/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: nanoeukaryote_biovol, <strong>unit</strong>: m^3/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: nanoeukaryote_ug/l, <strong>unit</strong>: m^3/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: natf, <strong>unit</strong>: nE/m^2/sr/s, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: neo, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: nccb, <strong>unit</strong>: nmol/m^2/hr, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ncpb, <strong>unit</strong>: nmol/m^2/hr, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: nh4, <strong>unit</strong>: nmol/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: no2, <strong>unit</strong>: nmol/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: no2_no3, <strong>unit</strong>: nmol/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: no3, <strong>unit</strong>: nmol/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: npf, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: npp, <strong>unit</strong>: mg/m^3/d,ug/l/d, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: nrb, <strong>unit</strong>: photoelectrons/usec/shot, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: oxygen, <strong>unit</strong>: ml/L, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: oxygen_saturation, <strong>unit</strong>: %, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: oz, <strong>unit</strong>: dobson, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: p-457, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: par, <strong>unit</strong>: uE/cm^2/s, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pc, <strong>unit</strong>: mg/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pco2, <strong>unit</strong>: uatm, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: perid, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pdrift, <strong>unit</strong>: mbar, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ph, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0, <strong>upper bound</strong>: 14</li>
+<li><strong>name</strong>: phaeo, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: phide_a, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: phide_b, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: phide_c, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: phytin_a, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: phytin_b, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: phytin_c, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: phytyl-chl_c, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: phyto_carbon, <strong>unit</strong>: ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pic, <strong>unit</strong>: mol/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pim, <strong>unit</strong>: mg/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: picoeukaryote_abun, <strong>unit</strong>: cell/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: picoeukaryote_biovol, <strong>unit</strong>: m^3/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: picoeukaryote_carbon, <strong>unit</strong>: ug/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: pitch, <strong>unit</strong>: degrees, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: pn, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: po4, <strong>unit</strong>: nmol/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: poc, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pom, <strong>unit</strong>: mg/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: pon, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pp, <strong>unit</strong>: mgC/mgchla/hr, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ppc, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ppc_tcar, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ppc_tpg, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: ppf, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pras, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pressure, <strong>unit</strong>: dbar, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pressure_atm, <strong>unit</strong>: mbar, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: prochlorococcus_abun, <strong>unit</strong>: cell/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: prochlorococcus_biovol, <strong>unit</strong>: m^3/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: prochlorococcus_carbon, <strong>unit</strong>: ug/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: psc, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: psc_tcar, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: psd, <strong>unit</strong>: ul/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: psp, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: psp_tpg, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pulse_width, <strong>unit</strong>: seconds, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pvel, <strong>unit</strong>: m/s, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pyrophide_a, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pyrophytin_a, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pyrophytin_b, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: pyrophytin_c, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: q, <strong>unit</strong>: sr, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: qc, <strong>unit</strong>: none, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: *_qc, <strong>unit</strong>: none, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: r, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: relabundance, <strong>unit</strong>: %, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: relaz, <strong>unit</strong>: degrees, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: rf, <strong>unit</strong>: uW/cm^2/nm/sr, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: rl, <strong>unit</strong>: 1/sr, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: roll, <strong>unit</strong>: degrees, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: rpi, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: rrs, <strong>unit</strong>: 1/sr,sr^-1, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: rtilt, <strong>unit</strong>: degrees, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: s_ad, <strong>unit</strong>: Slope, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: s_ag, <strong>unit</strong>: Slope, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: sal, <strong>unit</strong>: PSU, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: saz, <strong>unit</strong>: degrees, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: sdy, <strong>unit</strong>: ddd, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: second, <strong>unit</strong>: ss, <strong>data type</strong>: number, <strong>lower bound</strong>: 0, <strong>upper bound</strong>: 59</li>
+<li><strong>name</strong>: senz, <strong>unit</strong>: degrees, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: sig, <strong>unit</strong>: mV, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: sigma_psii, <strong>unit</strong>: angstrom^2, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: sigma_theta, <strong>unit</strong>: kg/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: sigmat, <strong>unit</strong>: kg/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: sio4, <strong>unit</strong>: mmol/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: siphn, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: siphx, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: speed_f_w, <strong>unit</strong>: m/s, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: spm, <strong>unit</strong>: mg/L, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: sst, <strong>unit</strong>: degreesC, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: stimf, <strong>unit</strong>: volts, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: synechococcus_abun, <strong>unit</strong>: cell/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: synechococcus_biovol, <strong>unit</strong>: m^3/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: synechococcus_carbon, <strong>unit</strong>: ug/l, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: sz, <strong>unit</strong>: m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: sza, <strong>unit</strong>: degrees, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: tacc, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: tacc_tchla, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: tcar, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: tchl, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: tchl_tcar, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: tchla_tpg, <strong>unit</strong>: none, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: tdn, <strong>unit</strong>: mmol/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: tdrift, <strong>unit</strong>: degreesC, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: tilt, <strong>unit</strong>: degrees, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: time, <strong>unit</strong>: hh:mm:ss, <strong>data type</strong>: time</li>
+<li><strong>name</strong>: time_processed, <strong>unit</strong>: hh:mm:ss, <strong>data type</strong>: time</li>
+<li><strong>name</strong>: tot_chl_a, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: tot_chl_b, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: tot_chl_c, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: tpg, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: trans, <strong>unit</strong>: %, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: turbidity, <strong>unit</strong>: NTU, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: u, <strong>unit</strong>: d-1,1/d,d^-1, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: u_ph, <strong>unit</strong>: d-1,1/d,d^-1, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: u_zoo, <strong>unit</strong>: d-1,1/d,d^-1, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: urea, <strong>unit</strong>: mmol/m^3, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: vauch, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: velnorth, <strong>unit</strong>: m/s, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: veleast, <strong>unit</strong>: m/s, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: velup, <strong>unit</strong>: m/s, <strong>data type</strong>: number</li>
+<li><strong>name</strong>: viola, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: vocair, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: vocair, <strong>unit</strong>: ppbv, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: volfilt, <strong>unit</strong>: L, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: vsf, <strong>unit</strong>: 1/m/sr, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: vsfg, <strong>unit</strong>: 1/m/sr, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: vsfp, <strong>unit</strong>: 1/m/sr, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: vsfw, <strong>unit</strong>: 1/m/sr, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: vsf_angle, <strong>unit</strong>: degrees, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: water_depth, <strong>unit</strong>: m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: waveht, <strong>unit</strong>: m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: wavelength, <strong>unit</strong>: nm, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: wdir, <strong>unit</strong>: degrees, <strong>data type</strong>: number, <strong>lower bound</strong>: 0, <strong>upper bound</strong>: 360</li>
+<li><strong>name</strong>: wind, <strong>unit</strong>: m/s, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: wt, <strong>unit</strong>: degreesC, <strong>data type</strong>: number, <strong>lower bound</strong>: -4, <strong>upper bound</strong>: 40</li>
+<li><strong>name</strong>: wvp, <strong>unit</strong>: cm, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: year, <strong>unit</strong>: yyyy, <strong>data type</strong>: number, <strong>lower bound</strong>: 1975, <strong>upper bound</strong>: 2019</li>
+<li><strong>name</strong>: z_90, <strong>unit</strong>: m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: z_dcm, <strong>unit</strong>: m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: z_eu, <strong>unit</strong>: m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: z_mld, <strong>unit</strong>: m, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+<li><strong>name</strong>: zea, <strong>unit</strong>: mg/m^3,ug/l, <strong>data type</strong>: number, <strong>lower bound</strong>: 0</li>
+</ul>
+<h2 id="field-suffixes">Field suffixes</h2>
+<pre><code class="eval_rst">
+.. csv-table:: field Suffixes
+   :widths: 15 40 20
+   :header-rows: 1
+   :file: ocdb-suffixes.csv
+</code></pre>
+
+<h2 id="field-modifiers">Field Modifiers</h2>
+<pre><code class="eval_rst">
+.. csv-table:: The contents of 
+   :widths: 15 40 20
+   :header-rows: 1
+   :file: ocdb-modifiers.csv
+</code></pre>
+
+<h2 id="fields">Fields</h2>
+<pre><code class="eval_rst">
+.. csv-table:: The contents of 
+   :widths: 15 40 20
+   :header-rows: 1
+   :file: ocdb_fields.csv
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ocdb-validation-config/" class="btn btn-neutral float-right" title="Validation Config">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ocdb-tech-docs/" class="btn btn-neutral" title="Tech Docs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/bcdev/ocdb-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../ocdb-tech-docs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ocdb-validation-config/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

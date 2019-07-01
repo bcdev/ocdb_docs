@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Brockmann-Consult">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>API - OCDB</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "API";
+    var mkdocs_page_input_path = "ocdb-api-cli.md";
+    var mkdocs_page_url = "/ocdb-api-cli/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/js.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OCDB</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">API</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#the-ocdb-command-line-client-and-python-api">The OCDB Command Line Client and Python API</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#installation">Installation</a></li>
+        
+            <li><a class="toctree-l3" href="#configure">Configure</a></li>
+        
+            <li><a class="toctree-l3" href="#search-database">Search Database</a></li>
+        
+            <li><a class="toctree-l3" href="#get-datasets">Get Datasets</a></li>
+        
+            <li><a class="toctree-l3" href="#user-management">User Management</a></li>
+        
+            <li><a class="toctree-l3" href="#managing-submissions">Managing Submissions</a></li>
+        
+            <li><a class="toctree-l3" href="#general">General</a></li>
+        
+            <li><a class="toctree-l3" href="#list-of-functionscli-commands">List of functions/CLI commands</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-data-access-policy/">Data Access Policy</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-examples/">Examples</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-rest/">Rest</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-search/">Search</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-tech-deployment/">Deployment</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-tech-docs/">Tech Docs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-validation-rules/">Validation Rules</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-validation-config/">Validation Config</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-webui/">WebUI</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OCDB</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>API</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/bcdev/ocdb-docs/ocdb-api-cli.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="the-ocdb-command-line-client-and-python-api">The OCDB Command Line Client and Python API</h1>
+<p>Automation and easy access is important. The OCDB database system does,
+therefore,
+offer a python command line interface as well as a Python API to access
+as well as manage submissions and users. </p>
+<h2 id="installation">Installation</h2>
+<p>To install the CLI and API, please use following steps.</p>
+<pre><code class="bash">    git clone https://github.com/bcdev/ocdb-client
+    cd ocdb-client
+    conda env create
+    [conda] activate ocdb-client
+    python setup.py install
+</code></pre>
+
+<h2 id="configure">Configure</h2>
+<p>In order to access the database you need to configure the REST API server address.
+The default address is <code>https://ocdb.eumetsat.int</code>.</p>
+<p>cli:</p>
+<pre><code class="bash">ocdb-cli conf 
+
+https://ocdb.eumetsat.int
+
+ocdb-cli cond server_url [some url]
+</code></pre>
+
+<p>python:</p>
+<pre><code class="python">from ocdb_client.api.OCDBApi import new_api
+
+api = new_api()
+
+api.config
+
+#Out[11]: {'server_url': 'https://ocdb.eumetsat.int'}
+
+api.set(server_url=&quot;[some server url]&quot;)
+
+</code></pre>
+
+<h2 id="search-database">Search Database</h2>
+<p>The database can be searched using the so-called Lucene syntax (https://lucene.apache.org/core/2_9_4/queryparsersyntax.html). The Lucene
+syntax allows you to query specific fields and also allows to apply logic,
+chaining of queries, and using wild cards.</p>
+<p>The first example below for instance attempts to find data files
+that include the name <em>"Colleen"</em> in the investigators meta field.</p>
+<p>bash:</p>
+<pre><code class="bash">ocdb-cli ds find --expr &quot;investigators: *Colleen*&quot;
+
+{
+  &quot;locations&quot;: {},
+  &quot;total_count&quot;: 900,
+  &quot;datasets&quot;: [
+    {
+      &quot;id&quot;: &quot;5c6d632661d82d28bf8ce807&quot;,
+      &quot;path&quot;: &quot;URI/Mouw/NIH-NSF_Lake_Erie/URI_Lake_Erie_2013/archive/URI_Lake_Erie20130820_2_0m_ag.txt&quot;
+    },
+    ...
+</code></pre>
+
+<p>python:</p>
+<pre><code class="python">api.find_datasets(expression=&quot;investigators:*Colleen*&quot;)
+
+{
+  &quot;locations&quot;: {},
+  &quot;total_count&quot;: 900,
+  &quot;datasets&quot;: [
+    {
+      &quot;id&quot;: &quot;5c6d632661d82d28bf8ce807&quot;,
+      &quot;path&quot;: &quot;URI/Mouw/NIH-NSF_Lake_Erie/URI_Lake_Erie_2013/archive/URI_Lake_Erie20130820_2_0m_ag.txt&quot;
+    },
+    ...
+</code></pre>
+
+<p><strong>Possible fields are</strong>:</p>
+<ul>
+<li><strong>path</strong>: </li>
+<li><strong>received</strong>: Date received</li>
+<li><strong>identifier_product_doi</strong>: Product DOI</li>
+<li><strong>investigators</strong>: Primary Investigators (PIs) of the experiment</li>
+<li><strong>affiliations</strong>: The affiliations of the PIs.</li>
+<li><strong>contact</strong>: Contact (email address) of the PIs.</li>
+<li><strong>experiment</strong>: Identifier of the experiment</li>
+<li><strong>cruise</strong>: Identifier of the cruise</li>
+<li><strong>data_file_name</strong>: The name of the original data file</li>
+<li><strong>data_type</strong>: The data type (e.g. scan)</li>
+<li><strong>documents</strong>: Comma separated list of uploaded supplementary documents</li>
+<li><strong>data_status</strong>: e.g. final</li>
+<li><strong>start_date</strong>: Start of measurements,</li>
+<li><strong>end_date</strong>: End of measurements</li>
+<li><strong>water_depth</strong>: Water depths during measurement</li>
+<li><strong>measurement_depth</strong>: Measurement depth</li>
+<li><strong>secchi_depth</strong>: Secchi depth</li>
+<li><strong>missing</strong>: Fill value</li>
+<li><strong>delimiter</strong>: Delimiter of data file e.g. tab</li>
+<li><strong>units</strong>: Comma separated list of units e.g. "nm,1/m,1/m"</li>
+</ul>
+<h2 id="get-datasets">Get Datasets</h2>
+<p>The search engine returns a list of datasets. In order to retrieve the actual data you, you will have 
+to use the result and obtain dataset IDs. A dataset ID can be used to get actual data:</p>
+<p>python:</p>
+<pre><code class="python">api.get_dataset(dataset_id='5c6d632661d82d28bf8ce807', fmt='pandas')
+
+Out[10]: 
+     wavelength      ag   ag_sd
+0           300  6.1015  0.2407
+1           301  5.9565  0.2389
+2           302  5.8140  0.2352
+3           303  5.6763  0.2318
+...
+
+</code></pre>
+
+<h2 id="user-management">User Management</h2>
+<p><strong>Login User</strong>:</p>
+<p>The login procedure will ask for a user name and password. You can specify the password
+ as an option. However, under normal circumstances we advice to use the command line prompt.</p>
+<p>The example below will login a user with the user name 'admin'. 'admin' is
+a dummy user that should be present in the Copernicus production database. Scott
+does not have any privileges.</p>
+<p>cli:</p>
+<pre><code class="bash">ocdb-cli user login --user scott --password tiger
+</code></pre>
+
+<p>python:</p>
+<pre><code class="python">api.login_user(username='scott', password='tiger')
+</code></pre>
+
+<p><strong>Add User</strong>:</p>
+<p>To add a user, specify the required user information</p>
+<p>cli:</p>
+<pre><code class="bash">ocdb-cli user add -u admin -p admin -fn Submit -ln Submit -em jj -ph hh -r admin
+</code></pre>
+
+<p>python:</p>
+<pre><code class="python">api.add_user(username='&lt;user_name&gt;', password='&lt;passwd&gt;', roles=['&lt;role1&gt;, &lt;role2&gt;'])
+</code></pre>
+
+<p>You need to have administrative access rights to be able to complete this action.</p>
+<p><strong>Get User Information</strong>:</p>
+<p>cli:</p>
+<pre><code class="bash">ocdb-cli user get --user scott
+</code></pre>
+
+<p>python:</p>
+<pre><code class="python">api.get_user(name=&lt;user_name&gt;)
+</code></pre>
+
+<p>You need to have administrative access rights to perform this operation for any user. 
+Users can request their own information without restrictions.</p>
+<p><strong>Delete a User</strong>:</p>
+<p>cli:</p>
+<pre><code class="bash">ocdb-cli user delete --user scott
+</code></pre>
+
+<p>python:</p>
+<pre><code class="python">api.delete_user(name=&lt;user_name&gt;)
+</code></pre>
+
+<p>You need to have administrative access rights to be able to complete this action</p>
+<p><strong>Update an Existing User</strong>:</p>
+<p>cli:</p>
+<pre><code class="bash">ocdb-cli user update --key last_name --value &lt;your value&gt;
+</code></pre>
+
+<p>python:</p>
+<pre><code class="python">api.update_user(name=&lt;user_name&gt;, key=&lt;key&gt;, value=&lt;value&gt;)
+</code></pre>
+
+<p>You need to have administrative access rights to perform this operation for any user. 
+Users can update their own information without restrictions.</p>
+<h2 id="managing-submissions">Managing Submissions</h2>
+<p><strong>Get Submission</strong>:</p>
+<p>cli:</p>
+<pre><code class="bash">ocdb-cli sbm get --submission-id &lt;submission-id&gt;
+</code></pre>
+
+<p>python:</p>
+<pre><code class="python">api.get_submission(&lt;submission-id&gt;)
+</code></pre>
+
+<p>You need to have administrative access rights to perform this operation for any submission. 
+Users can monitor their own submissions without restrictions.</p>
+<p><strong>Get Submissions for a specific User</strong>:</p>
+<p>cli:</p>
+<pre><code class="bash">ocdb-cli sbm user --user-id &lt;user-id&gt;
+</code></pre>
+
+<p>python:</p>
+<pre><code class="python">api.get_submissions_for_user(&lt;user-id&gt;)
+</code></pre>
+
+<p>You need to have administrative access rights to perform this operation for any submission. 
+Users can monitor their own submissions without restrictions.</p>
+<p><strong>Delete Submission</strong>:</p>
+<p>cli:</p>
+<pre><code class="bash">ocdb-cli sbm delete --submission-id &lt;submission-id&gt;
+</code></pre>
+
+<p>python:</p>
+<pre><code class="python">api.delete_submission(&lt;submission-id&gt;)
+</code></pre>
+
+<p>You need to have administrative access rights to perform this operation for any submission. 
+Users can delete their own submissions without restrictions.</p>
+<p><strong>Update Submission Status</strong>:</p>
+<p>This command allows to manipulate the status of a submission. Some status changes will have impact on
+whether the data are searchable or not.</p>
+<p>The following list shows the different stati and the impact on the accessibility when changing them:</p>
+<ul>
+<li>SUBMITTED: A dataset has been submitted. Usually also means that the data has issues. This will trigger
+  the automated validation process</li>
+<li>VALIDATED: The data has been submitted and is clean</li>
+<li>PROCESSED: The data has been processed into the database and is findable, but only to admins and the submitting user</li>
+<li>PUBLISHED: The data has been processed into the database and is publicly available</li>
+<li>CANCELED: The data submission has been canceled. Setting this status will remove the data from the database and will
+  not be findable anymore</li>
+<li>PAUSED: The user pauses the submission. This indicates that the admin shall not publish or process the data</li>
+</ul>
+<p>cli:</p>
+<pre><code class="bash">ocdb-cli sbm status --submission-id &lt;submission-id&gt; --status &lt;status&gt;
+</code></pre>
+
+<p>python</p>
+<pre><code class="python">api.update_submission_status(&lt;submission-id&gt;, &lt;status&gt;)
+</code></pre>
+
+<p>You need to have administrative access rights to perform this operation for any submission. 
+Users can submit, cancel and pause their own submissions without restrictions.</p>
+<p><strong>Download Submission File</strong>:</p>
+<p>This command will download a single submission file. Please be aware that the version of the file is that of the submission
+status. Do not use this feature to download data, instead use the "dataset" API.</p>
+<p>cli:</p>
+<pre><code class="bash">ocdb-cli sbm download --submission-id &lt;submission-id&gt; --index &lt;index&gt;
+</code></pre>
+
+<p>python</p>
+<pre><code class="python">api.download_submission_file(&lt;submission-id&gt;, &lt;index&gt;)
+</code></pre>
+
+<p><strong>Upload Submission File</strong>:</p>
+<p>The aim of this feature is to enable users and admin to replace an existing submission file. You can
+replace both documents and measurements.</p>
+<p>cli</p>
+<pre><code class="bash">ocdb-cli sbm upload --submission-id &lt;submission-id&gt; --index &lt;index&gt; --file &lt;file&gt;
+</code></pre>
+
+<p>python</p>
+<pre><code class="python">api.upload_submission_file(&lt;submission-id&gt;, &lt;index&gt;, &lt;file&gt;)
+</code></pre>
+
+<p>You need to have administrative access rights to perform this operation for any submission file. 
+Users can update their own submission files without restrictions.</p>
+<h2 id="general">General</h2>
+<p><strong>Get License</strong></p>
+<pre><code class="bash">ocdb-cli lic
+</code></pre>
+
+<h2 id="list-of-functionscli-commands">List of functions/CLI commands</h2>
+<pre><code class="eval_rst">+-----------+----+--------+--------------------------------------------+
+| Operation | CL | API    | Parameters                                 |
+|           | I  |        |                                            |
++===========+====+========+============================================+
+| Upload    | sb | upload | store_path: str, dataset_files:            |
+| Submissio | m  | _submi | Sequence[str], doc_files: Sequence[str],   |
+| n         | up | ssion  | path: str, submission_id: str,             |
+|           | lo |        | publication_date: str, allow_publication:  |
+|           | ad |        | bool                                       |
++-----------+----+--------+--------------------------------------------+
+| Download  | ds | downlo | ids: List[str], download_docs: bool,       |
+| datasets  | do | ad_dat | out_fn: Optional[str]                      |
+| by Ids    | wn | asets_ |                                            |
+|           | lo | by_ids |                                            |
+|           | ad |        |                                            |
++-----------+----+--------+--------------------------------------------+
+| Delete    | ds | delete | submission_id: str                         |
+| datasets  | de | _datas |                                            |
+| by        | l- | ets_by |                                            |
+| submissio | by | _submi |                                            |
+| n         | -s | ssion  |                                            |
+|           | b  |        |                                            |
++-----------+----+--------+--------------------------------------------+
+| Get       | ds | get_da | submission_id: str                         |
+| datasets  | ge | tasets |                                            |
+| by        | t- | _by_su |                                            |
+| submissio | by | bmissi |                                            |
+| n         | -s | on     |                                            |
+|           | b  |        |                                            |
++-----------+----+--------+--------------------------------------------+
+| Get a     | ds | get_da | dataset_id: str, fmt: str                  |
+| single    | ge | taset  |                                            |
+| dataset   | t  |        |                                            |
+| by ID     |    |        |                                            |
++-----------+----+--------+--------------------------------------------+
+| Find      | ds | find_d |                                            |
+| datasets  | fi | ataset |                                            |
+|           | nd | s      |                                            |
++-----------+----+--------+--------------------------------------------+
+| Get       | sb | get_su | submission_id: str                         |
+| submissio | m  | bmissi |                                            |
+| n         | ge | on     |                                            |
+| by ID     | t  |        |                                            |
++-----------+----+--------+--------------------------------------------+
+| Get       | sb | get_su | user_id: str                               |
+| submissio | m  | bmissi |                                            |
+| ns        | us | ons_fo |                                            |
+| for user  | er | r_user |                                            |
++-----------+----+--------+--------------------------------------------+
+| Update    | sb | update | submission_id: str, status: str            |
+| status of | m  | _submi |                                            |
+| a         | st | ssion_ |                                            |
+| submissio | at | status |                                            |
+| n         | us |        |                                            |
++-----------+----+--------+--------------------------------------------+
+| Delete an | sb | delete | submission_id: str                         |
+| entire    | m  | _submi |                                            |
+| submissio | de | ssion  |                                            |
+| n         | le |        |                                            |
+|           | te |        |                                            |
++-----------+----+--------+--------------------------------------------+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ocdb-data-access-policy/" class="btn btn-neutral float-right" title="Data Access Policy">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/bcdev/ocdb-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ocdb-data-access-policy/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

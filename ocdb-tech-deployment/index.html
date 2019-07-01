@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Brockmann-Consult">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Deployment - OCDB</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Deployment";
+    var mkdocs_page_input_path = "ocdb-tech-deployment.md";
+    var mkdocs_page_url = "/ocdb-tech-deployment/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/js.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OCDB</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-api-cli/">API</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-data-access-policy/">Data Access Policy</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-examples/">Examples</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-rest/">Rest</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-search/">Search</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Deployment</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#deployment">Deployment</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#webui">WebUI</a></li>
+        
+            <li><a class="toctree-l3" href="#clipython-api">CLI/Python API</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-tech-docs/">Tech Docs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-validation-rules/">Validation Rules</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-validation-config/">Validation Config</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-webui/">WebUI</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OCDB</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Deployment</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/bcdev/ocdb-docs/ocdb-tech-deployment.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="deployment">Deployment</h1>
+<h2 id="webui">WebUI</h2>
+<p>The WEBUI uses the following technologies:</p>
+<ul>
+<li>React</li>
+<li>Typescript</li>
+<li>nodejs</li>
+<li>yarn</li>
+<li>leaflet</li>
+</ul>
+<p>To install a development version, you will need to install git, nodejs and yarn and execute the following steps that
+will install all dependencies and start a development server on port 3000:</p>
+<pre><code class="bash">
+git clone https://github.com/bcdev/ocdb-webui.git
+cd  ocdb-webui
+yarn install
+yarn start
+
+</code></pre>
+
+<p>For installing a production version we encourage you to use our docker container. The
+container exposes port 3000. It is up to you to map it to a different port.</p>
+<pre><code class="bash">docker run -p 3000:3000 quay.io/bcdev/eocdb-webui:latest
+</code></pre>
+
+<p>We also provide a repository that allows to install the whole OCDB infrastructure including
+the backend server, Mongo DB, and this WEBUI. Running all services will require docker as
+well as docker-compose to be installed on your system. The build process will copy the WEBUI
+static files into the server image. 'up -d' will start two containers: One mongodb database server
+and the backend server which serves the RESTful service as well as the WEBUI site.</p>
+<pre><code class="bash">git clone https://github.com/bcdev/ocdb-services
+cd ocdb-services
+docker-compose build
+docker-compose up -d
+</code></pre>
+
+<p>The following example shows the running server on <a href="https://ocdb.eumetsat.int">ocdb.eumetsat.int</a>.
+As you can see the server exposes port 4000 but is mapped to 443.</p>
+<pre><code>$ ./docker-compose ps
+
+                Name                           Command                  State              Ports
+    ----------------------------------------------------------------------------------------------------
+    eocdb-services_eocdb-db_1       docker-entrypoint.sh mongod      Up             27017/tcp
+    eocdb-services_eocdb-server_1   /bin/bash -c source activa ...   Up (healthy)   0.0.0.0:80-&gt;4000/tcp
+
+</code></pre>
+
+<h2 id="clipython-api">CLI/Python API</h2>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ocdb-tech-docs/" class="btn btn-neutral float-right" title="Tech Docs">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ocdb-search/" class="btn btn-neutral" title="Search"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/bcdev/ocdb-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../ocdb-search/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ocdb-tech-docs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

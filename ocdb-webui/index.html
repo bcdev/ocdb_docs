@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Brockmann-Consult">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>WebUI - OCDB</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "WebUI";
+    var mkdocs_page_input_path = "ocdb-webui.md";
+    var mkdocs_page_url = "/ocdb-webui/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/js.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OCDB</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-api-cli/">API</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-data-access-policy/">Data Access Policy</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-examples/">Examples</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-rest/">Rest</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-search/">Search</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-tech-deployment/">Deployment</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-tech-docs/">Tech Docs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-validation-rules/">Validation Rules</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ocdb-validation-config/">Validation Config</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">WebUI</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#user-manual-for-the-ocdb-webui">User Manual for the OCDB WebUI</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#search">Search</a></li>
+        
+            <li><a class="toctree-l3" href="#submissions">Submissions</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OCDB</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>WebUI</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/bcdev/ocdb-docs/ocdb-webui.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="user-manual-for-the-ocdb-webui">User Manual for the OCDB WebUI</h1>
+<p>The aim of the Copernicus Ocean Colour Databas (OCDB) is to provide a platform to publish
+ocean related <em>in-situ</em> measurements. This tool enables researchers to upload
+their own <em>in-situ</em> data using the the <a href="https://earthdata.nasa.gov/esdis/eso/standards-and-references/ascii-file-format-guidelines-for-earth-science-data/seabass-data-file-format">Seabass data format</a>. </p>
+<p>The main features of the OCDB database system are the provision of the data to the research
+community with an enhanced search facility. Further, data that is uploaded by
+the researchers will automatically validated during the upload process which includes
+a report on the validation result. The researcher also keeps full control over
+the submission and publication process.     </p>
+<h2 id="search">Search</h2>
+<p>All data the submitter has agreed to publish is searchable for the public. 
+The OCDB WebUI offers a search interface. Main feature of that interface is the search text field.
+You can enter a single keyword which will attempt to find data using the meta
+data fields provided by the submitter. This field also allows to use the
+so-called Lucene syntax which enables you to search for specific field values
+and also allows chaining.</p>
+<p>Please refer to the search chapter for more details around the Lucene search syntax.</p>
+<p><img alt="advanced" src="../static/webui/advanced_options.png" />
+<img alt="advanced" src="../static/webui/save_search.png" /></p>
+<p><img alt="advanced" src="../static/webui/select_region.png" /></p>
+<h2 id="submissions">Submissions</h2>
+<p>In this section we describe how to submit data. We assume that you have a user 
+account and have logged in to the system. When clicking on the submission section a list of your submissions will appear including action buttons.</p>
+<h3 id="new-submission">New Submission</h3>
+<p>If you want to add a new submission click on New Submission on the top right corner.
+A new dialog will open. Please add an identifier for your submission and a path
+where submissions files will be stored under. This will be used to i</p>
+<p>When submitting data, you will be asked to provide a publication date. Leave this empty if you do not desire your data to be searchible. Otherwise, indicate
+what date you would like your data to be available to the public.</p>
+<p>If you don't want the data to be published, tick 'publication' allowed. This 
+will be shown in the submission table to the administrators.   </p>
+<p>Once you initiate the submission by pushing "Submit" your data will be validated
+using plausibility and validation rules (link to rules).</p>
+<p>If the validation succeeds, the status of your submission will be VALIDATED 
+otherwise SUBMITTED. If the system finds errors you can view them in the 
+submission file table by clicking 'list files' on the submission table item. </p>
+<p><img alt="submission" src="../static/webui/submission_dialog.png" /></p>
+<p><img alt="list" src="../static/webui/submission_validation_results.png" /></p>
+<p><img alt="list" src="../static/webui/submission_process.png" /></p>
+<h3 id="submission-actions">Submission Actions</h3>
+<p><strong>List Submission Files</strong>:</p>
+<p>Views a table of submissions files and enables you to apply actions (see
+chapter Submission File Actions). </p>
+<p><img alt="list" src="../static/webui/list.png" />
+<img alt="list" src="../static/webui/submission_list.png" /></p>
+<p><strong>Process Data</strong>:</p>
+<p>Until now, the data listed in the submission is not visible in the database.
+The button <strong>Process Data</strong> will start the processing action. When finished,
+the data will be visible, burt <strong>ONLY</strong> to the submitting user and admins. </p>
+<p><img alt="list" src="../static/webui/process.png" /></p>
+<p>When pushing this button, the data will be processed into the database and, 
+therefore, available for searching ONLY for administrators and the submittor.</p>
+<p><strong>Publish Data</strong>:</p>
+<p><strong>Publish Data</strong> will do exactly the same as <strong>Process Data</strong>, but will set
+the status of the data to <strong>PUBLISHED</strong> and is, therefore, visible and
+downloadable by the public. The publishing process will check whether the
+data has been processed already to avoid data duplication. </p>
+<p><img alt="list" src="../static/webui/publish.png" /></p>
+<p><strong>Delete Submission</strong>:</p>
+<p>The whole submission will be deleted including processed/published data from the search database.</p>
+<p><img alt="list" src="../static/webui/delete.png" /></p>
+<p><strong>Halt Restart Submission</strong>:</p>
+<p><img alt="list" src="../static/webui/play.png" /></p>
+<p>The user is able to halt a submission. This will denote the administrators that the
+user wished that the is <strong>NOT</strong> to be processed. Once the process is halted, the user 
+can a <strong>Restart</strong> button will appear. </p>
+<p><strong>Cancel Submission</strong>:</p>
+<p>Cancelling the submission will delete the database entries linked to this submission.</p>
+<p><img alt="list" src="../static/webui/cancel.png" /></p>
+<h3 id="submission-statuses">Submission Statuses</h3>
+<p>From the above actions the following statuses for submissions derive.</p>
+<ul>
+<li>Submitted</li>
+<li>Validated</li>
+<li>Cancelled</li>
+<li>Processed</li>
+<li>Published</li>
+</ul>
+<h3 id="submission-file-actions">Submission File Actions</h3>
+<p>When clicking on listing files for a submission the data and document
+files are listed. This new table provides the following actions:</p>
+<p><strong>List Validation Issues</strong>:</p>
+<p>List issues the system encountered when validating the data file.</p>
+<p><img alt="list" src="../static/webui/list.png" /></p>
+<p><strong>Delete File</strong>:</p>
+<p>Remove the file from the submission.</p>
+<p><img alt="delete" src="../static/webui/delete.png" /></p>
+<p><strong>Download File</strong>:</p>
+<p>Download the file if a changed to the submission file is required.</p>
+<p><img alt="download" src="../static/webui/download.png" /></p>
+<p><strong>Upload File</strong>:</p>
+<p>Reupload a new version of the file. The old one will be overwritten. The 
+validation will be re-run.</p>
+<p><img alt="reupload" src="../static/webui/upload.png" /></p>
+<h3 id="submission-file-statuses">Submission File Statuses</h3>
+<ul>
+<li>ERROR</li>
+<li>VALIDATED</li>
+<li>WARNING</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../ocdb-validation-config/" class="btn btn-neutral" title="Validation Config"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/bcdev/ocdb-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../ocdb-validation-config/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
